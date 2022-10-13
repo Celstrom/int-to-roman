@@ -1,18 +1,29 @@
-list = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'), (100, 'C'), (90, 'XC'),
-              (50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')]
+def int_to_roman(num):
+    # Storing roman values of digits from 0-9
 
+    #thousands place
+    m = ["", "M", "MM", "MMM"]
 
-def converter(num):
-    answer = ''
+    #hundreds place
+    c = ["", "C", "CC", "CCC", "CD", "D",
+         "DC", "DCC", "DCCC", "CM "]
 
-    while num > 0:
-        for int, rom in list:
-            while num >= int:
-                answer += rom
-                num -= int
+    #tens place
+    x = ["", "X", "XX", "XXX", "XL", "L",
+         "LX", "LXX", "LXXX", "XC"]
 
-    return answer
+    #ones place
+    i = ["", "I", "II", "III", "IV", "V",
+         "VI", "VII", "VIII", "IX"]
 
+    thousands = m[num // 1000]
+    hundreds = c[(num % 1000) // 100]
+    tens = x[(num % 100) // 10]
+    ones = i[num % 10]
 
-# *enter your number to convert in the parentheses*
-print(converter(3000))
+    ans = (thousands + hundreds +
+           tens + ones)
+
+    return ans
+
+  print(int_to_roman(666))
